@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Change Image App</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f4f4f4;
+      font-family: Arial, sans-serif;
+    }
+
+    .box {
+      width: 400px;
+      height: 400px;
+      border: 2px solid #333;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .top-half, .bottom-half {
+      height: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .top-half {
+      background: #fff;
+    }
+
+    .top-half img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .bottom-half {
+      background: #eaeaea;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #28a745;
+      color: white;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #1e7e34;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <!-- Top Half with Image -->
+    <div class="top-half">
+      <img id="myImage" src="https://via.placeholder.com/200/007bff/ffffff?text=First+Image" alt="Sample Image">
+    </div>
+
+    <!-- Bottom Half with Button -->
+    <div class="bottom-half">
+      <button onclick="changeImage()">Change</button>
+    </div>
+  </div>
+
+  <script>
+    function changeImage() {
+      let img = document.getElementById("myImage");
+      if (img.src.includes("First+Image")) {
+        img.src = "https://images.pexels.com/photos/33673041/pexels-photo-33673041.jpeg";
+      } else {
+        img.src = "https://images.pexels.com/photos/27771819/pexels-photo-27771819.jpeg";
+      }
+    }
+  </script>
+</body>
+</html>
