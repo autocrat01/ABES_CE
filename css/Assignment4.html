@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counter App</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f4f4f4;
+      font-family: Arial, sans-serif;
+    }
+
+    .box {
+      width: 300px;
+      height: 300px;
+      background: white;
+      border: 2px solid #333;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      padding: 20px;
+      position: relative;
+      text-align: center;
+    }
+
+    .logo {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 40px;
+      height: 40px;
+    }
+
+    h2 {
+      margin-top: 10px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .counter {
+      font-size: 40px;
+      margin: 40px 0 20px;
+      font-weight: bold;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .increase {
+      background: #28a745;
+      color: white;
+    }
+
+    .decrease {
+      background: #dc3545;
+      color: white;
+    }
+
+    .message {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #ff5733;
+      font-weight: bold;
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <!-- Logo -->
+    <img src="data:image/png;base64,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" alt="Logo" class="logo">
+    
+    <!-- Title -->
+    <h2>Counter App</h2>
+    
+    <!-- Counter -->
+    <div class="counter" id="counter">0</div>
+    
+    <!-- Buttons -->
+    <button class="btn increase" onclick="increase()">Increase</button>
+    <button class="btn decrease" onclick="decrease()">Decrease</button>
+    
+    <!-- Message -->
+    <div class="message" id="message"></div>
+  </div>
+
+  <script>
+    let count = 0;
+    const counter = document.getElementById("counter");
+    const message = document.getElementById("message");
+
+    function increase() {
+      if (count < 10) {
+        count++;
+        counter.innerText = count;
+        message.innerText = "";
+      } else {
+        message.innerText = "Maximum limit reached!";
+      }
+    }
+
+    function decrease() {
+      if (count > 0) {
+        count--;
+        counter.innerText = count;
+        message.innerText = "";
+      } else {
+        message.innerText = "Minimum limit reached!";
+      }
+    }
+  </script>
+</body>
+</html>
