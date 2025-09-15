@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Students by Branch</title>
+</head>
+<body>
+<script>
+    const students = [
+    { firstname: "ayush", lastname: "raj", branch: "CE", AGE: 21 },
+    { firstname: "devansh", lastname: "vashishtha", branch: "IT", AGE: 22 },
+    { firstname: "uday", lastname: "singh", branch: "CE", AGE: 21 },
+    { firstname: "puneet", lastname: "sharma", branch: "CE", AGE: 19 },
+    { firstname: "lassi", lastname: "sharma", branch: "ME", AGE: 23 }
+    ];
+
+    // Group students by branch
+    const groups = {};
+    students.forEach(s => {
+    if (!groups[s.branch]) {
+        groups[s.branch] = [];
+    }
+    groups[s.branch].push(s);
+    });
+
+    // Create box for each branch
+    for (let branch in groups) {
+    const box = document.createElement('div');
+    box.style.border = "1px solid black";
+    box.style.padding = "10px";
+    box.style.margin = "10px";
+    box.style.display = "inline-block";
+
+    box.innerHTML = <h3>Branch: ${branch}</h3>;
+    groups[branch].forEach((s, i) => {
+        box.innerHTML += <p>Student ${i+1}: ${s.firstname} ${s.lastname}, Age: ${s.AGE}</p>;
+    });
+
+    document.body.appendChild(box);
+    }
+</script>
+</body>
+</html>
