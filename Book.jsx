@@ -1,16 +1,27 @@
-import React from "react"
-import './book.css'
+import React from "react";
+import "./book.css";
 
-function Book (){
-    return (
-        <div id="book">
-            <img src="https://imgs.search.brave.com/4kp2peWIlEI8dsjrBy1qDhYydzstkyBvBpn7jLn2ZCU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS1waG90/by9waG90by1ib29r/LXB1YmxpY2F0aW9u/LXB1cnBsZS1wYXBl/cl81Mzg3Ni0yMzUw/NDUuanBnP3NlbXQ9/YWlzX2h5YnJpZCZ3/PTc0MCZxPTgw" alt = "kitaab" height={100} width={100} >
-
-            </img>
-            <h1>
-            title.Math
-            </h1>
-            <h1> 250</h1>
-        </div>
-    )
+function Book(props) {
+  const [count, setCount] = React.useState(0);
+  function inc() {
+    setCount(count + 1);
+  }
+  function dec() {
+    setCount(count - 1);
+  }
+  
+  return (
+    <div id="Book">
+      <img src="https://m.media-amazon.com/images/I/91p5RF8nPFL._AC_UF1000,1000_QL80_.jpg" alt="" height={100} width={100}/>
+      <h1>Title:{props.title}</h1>
+      <h1>Price:{props.Price}</h1>
+      <div>
+        <button onClick={inc}>+</button>
+        <span>{count}</span>
+        <button onClick={dec}>-</button>
+      </div>
+    </div>
+  );
 }
+
+export default Book;
